@@ -13,9 +13,9 @@ public class Atendimento {
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
 
-    public Atendimento(Paciente paciente, LocalDateTime dataInicio) {
+    public Atendimento(Paciente paciente) {
         this.paciente = Objects.requireNonNull(paciente, "Paciente é obrigatório");
-        this.dataInicio = Objects.requireNonNull(dataInicio, "Data de início é obrigatória");
+        this.dataInicio = LocalDateTime.now();
         this.status = Status.EM_ANDAMENTO;
     }
 
@@ -54,5 +54,9 @@ public class Atendimento {
             throw new RegraDeNegocioException("Data de fim não pode ser anterior à data de início");
         }
         this.dataFim = dataFim;
+    }
+
+    public boolean isEncerrado() {
+        return Status.CONCLUIDO == this.status || Status.CANCELADO == this.status;
     }
 }

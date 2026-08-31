@@ -28,18 +28,21 @@ public class Profissional {
         return nome;
     }
 
-    public void setNome(String nome) {
-        if (nome == null || !validarNome(nome)) {
-            throw new RegraDeNegocioException("Nome inválido");
-        }
-        this.nome = nome;
-    }
-
     public TipoProfissional getTipo() {
         return tipo;
     }
 
     public void setTipo(TipoProfissional tipo) {
         this.tipo = Objects.requireNonNull(tipo, "Tipo é obrigatório");
+    }
+
+    public void atualizaDados(String nome, TipoProfissional tipo) {
+        if (nome != null && validarNome(nome)) {
+            this.nome = nome;
+        }
+
+        if (tipo != null) {
+            this.tipo = tipo;
+        }
     }
 }

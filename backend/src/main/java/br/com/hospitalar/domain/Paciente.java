@@ -57,26 +57,12 @@ public class Paciente {
         return nome;
     }
 
-    public void setNome(String nome) {
-        if (nome == null || !validarNome(nome)) {
-            throw new RegraDeNegocioException("Nome inválido");
-        }
-        this.nome = Objects.requireNonNull(nome, "Nome inválido");
-    }
-
     public String getCpf() {
         return cpf;
     }
 
     public String getTelefone() {
         return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        if (telefone == null || !validarTelefone(telefone)) {
-            throw new RegraDeNegocioException("Telefone inválido");
-        }
-        this.telefone = Objects.requireNonNull(telefone, "Telefone inválido");
     }
 
     public LocalDate getDataNascimento() {
@@ -87,10 +73,18 @@ public class Paciente {
         return email;
     }
 
-    public void setEmail(String email) {
-        if (email == null || !validarEmail(email)) {
-            throw new RegraDeNegocioException("Email inválido");
+    public void atualizaInformacoes(String nome, String telefone, String email, Endereco endereco) {
+        if (nome != null && validarNome(nome)) {
+            this.nome = nome;
         }
-        this.email = email;
+        if (telefone != null && validarTelefone(telefone)) {
+            this.telefone = telefone;
+        }
+        if (email != null && validarEmail(email)) {
+            this.email = email;
+        }
+        if (endereco != null) {
+            this.endereco = endereco;
+        }
     }
 }

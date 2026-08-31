@@ -17,11 +17,11 @@ public class EtapaAtendimento {
     private Status status;
     private String observacao;
 
-    public EtapaAtendimento(Atendimento atendimento, Profissional profissional, TipoEtapaAtendimento tipo, LocalDateTime dataInicio) {
+    public EtapaAtendimento(Atendimento atendimento, Profissional profissional, TipoEtapaAtendimento tipo) {
         this.atendimento = Objects.requireNonNull(atendimento, "Atendimento não pode ser nulo");
         this.profissional = Objects.requireNonNull(profissional, "Profissional não pode ser nulo");
         this.tipo = Objects.requireNonNull(tipo, "Tipo não pode ser nulo");
-        this.dataInicio = Objects.requireNonNull(dataInicio, "Data de início não pode ser nula");
+        this.dataInicio = LocalDateTime.now();
         this.status = Status.EM_ANDAMENTO;
     }
 

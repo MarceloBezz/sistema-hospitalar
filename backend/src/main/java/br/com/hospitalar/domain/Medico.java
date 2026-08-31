@@ -2,8 +2,6 @@ package br.com.hospitalar.domain;
 
 import static br.com.hospitalar.domain.utils.ValidacoesRegex.validarCRM;
 
-import java.util.Objects;
-
 import br.com.hospitalar.domain.enums.Especialidade;
 import br.com.hospitalar.domain.enums.TipoProfissional;
 import br.com.hospitalar.domain.exception.RegraDeNegocioException;
@@ -30,7 +28,10 @@ public class Medico extends Profissional {
         return especialidade;
     }
 
-    public void setEspecialidade(Especialidade especialidade) {
-        this.especialidade = Objects.requireNonNull(especialidade, "Especialidade é obrigatória");
+    public void atualizaDados(String nome, Especialidade especialidade) {
+        atualizaDados(nome, especialidade);
+        if (especialidade != null) {
+            this.especialidade = especialidade;
+        }
     }
 }

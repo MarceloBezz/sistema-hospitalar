@@ -11,4 +11,5 @@ public interface AtendimentoRepository {
     List<Atendimento> buscaPorMedico(Long idMedico);
     Atendimento cadastra(Atendimento atendimento);
     void salva(Atendimento atendimento);
+    boolean existePorId(Long idAtendimento);
 }
