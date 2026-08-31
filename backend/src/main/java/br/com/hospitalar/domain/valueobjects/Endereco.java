@@ -1,4 +1,4 @@
-package br.com.hospitalar.domain.object_values;
+package br.com.hospitalar.domain.valueobjects;
 
 public record Endereco(
         Long id,

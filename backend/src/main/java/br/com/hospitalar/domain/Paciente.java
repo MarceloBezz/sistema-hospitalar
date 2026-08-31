@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 import br.com.hospitalar.domain.exception.RegraDeNegocioException;
-import br.com.hospitalar.domain.object_values.Endereco;
+import br.com.hospitalar.domain.valueobjects.Endereco;
 
 public class Paciente {
     private Long id;

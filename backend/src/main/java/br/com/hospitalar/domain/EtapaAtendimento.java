@@ -7,7 +7,7 @@ import br.com.hospitalar.domain.enums.Status;
 import br.com.hospitalar.domain.enums.TipoEtapaAtendimento;
 import br.com.hospitalar.domain.exception.RegraDeNegocioException;
 
-public class Etapa_atendimento {
+public class EtapaAtendimento {
     private Long id;
     private Atendimento atendimento;
     private Profissional profissional;
@@ -17,7 +17,7 @@ public class Etapa_atendimento {
     private Status status;
     private String observacao;
 
-    public Etapa_atendimento(Atendimento atendimento, Profissional profissional, TipoEtapaAtendimento tipo, LocalDateTime dataInicio) {
+    public EtapaAtendimento(Atendimento atendimento, Profissional profissional, TipoEtapaAtendimento tipo, LocalDateTime dataInicio) {
         this.atendimento = Objects.requireNonNull(atendimento, "Atendimento não pode ser nulo");
         this.profissional = Objects.requireNonNull(profissional, "Profissional não pode ser nulo");
         this.tipo = Objects.requireNonNull(tipo, "Tipo não pode ser nulo");
