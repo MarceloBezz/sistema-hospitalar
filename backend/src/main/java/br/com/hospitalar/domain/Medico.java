@@ -20,6 +20,16 @@ public class Medico extends Profissional {
         this.especialidade = especialidade;
     }
 
+    public Medico(Long id, String nome, String crm, Especialidade especialidade) {
+        super(id, nome, TipoProfissional.MEDICO);
+        if (crm == null || !validarCRM(crm) || especialidade == null) {
+            throw new RegraDeNegocioException("Dados inválidos");
+        }
+        
+        this.crm = crm;
+        this.especialidade = especialidade;
+    }
+
     public String getCrm() {
         return crm;
     }

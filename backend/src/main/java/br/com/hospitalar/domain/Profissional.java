@@ -20,6 +20,11 @@ public class Profissional {
         this.tipo = tipo;
     }
 
+    public Profissional(Long id, String nome, TipoProfissional tipo) {
+        this(nome, tipo);
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
