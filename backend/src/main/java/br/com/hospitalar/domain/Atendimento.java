@@ -18,6 +18,13 @@ public class Atendimento {
         this.dataInicio = LocalDateTime.now();
         this.status = Status.EM_ANDAMENTO;
     }
+    public Atendimento(Long id, Paciente paciente, Status status, LocalDateTime dataInicio, LocalDateTime dataFim) {
+        this.id = id;
+        this.paciente = Objects.requireNonNull(paciente, "Paciente é obrigatório");
+        this.status = Objects.requireNonNull(status, "Status é obrigatório");
+        this.dataInicio = Objects.requireNonNull(dataInicio, "Data de início é obrigatória");
+        this.dataFim = dataFim;
+    }
 
     public void concluirAtendimento() {
         this.status = Status.CONCLUIDO;

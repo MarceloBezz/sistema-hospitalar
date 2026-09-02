@@ -18,12 +18,11 @@ public class BuscaEtapasPorAtendimentoService implements BuscaEtapasPorAtendimen
     }
 
     @Override
-    public List<EtapaAtendimento> execute(Long idAtendimento) {
-        if (!atendimentoRepository.existePorId(idAtendimento)) {
-            throw new RegraDeNegocioException("Atendimento não encontrado");
-        }
+    public List<EtapaAtendimento> execute(Long atendimentoId) {
+        var atendimento = atendimentoRepository.buscaPorId(atendimentoId)
+                .orElseThrow(() -> new RegraDeNegocioException("Atendimento não encontrado"));
 
-        return etapaAtendimentoRepository.buscaPorAtendimento(idAtendimento);
+        return etapaAtendimentoRepository.buscaPorAtendimento(atendimento);
     }
     
 }

@@ -25,6 +25,15 @@ public class EtapaAtendimento {
         this.status = Status.EM_ANDAMENTO;
     }
 
+    public EtapaAtendimento(Long id, Atendimento atendimento, Profissional profissional, TipoEtapaAtendimento tipo, Status status, LocalDateTime dataInicio, LocalDateTime dataFim, String observacao) {
+        this(atendimento, profissional, tipo);
+        this.id = id;
+        this.status = status;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.observacao = observacao;
+    }
+
     public TipoEtapaAtendimento encaminharProximaEtapa(TipoEtapaAtendimento proximaEtapa, String observacao) {
         concluirEtapa(observacao);
 

@@ -6,6 +6,7 @@ import br.com.hospitalar.application.ports.in.atendimento.BuscaAtendimentosPorPa
 import br.com.hospitalar.application.ports.out.AtendimentoRepository;
 import br.com.hospitalar.application.ports.out.PacienteRepository;
 import br.com.hospitalar.domain.Atendimento;
+import br.com.hospitalar.domain.exception.RegraDeNegocioException;
 
 public class BuscaAtendimentoPorPacienteService implements BuscaAtendimentosPorPacienteUseCase{
     private final AtendimentoRepository atendimentoRepository;
@@ -17,10 +18,9 @@ public class BuscaAtendimentoPorPacienteService implements BuscaAtendimentosPorP
     }
 
     public List<Atendimento> execute(Long pacienteId) {
-        if (!pacienteRepository.existePorId(pacienteId)) {
-            throw new IllegalArgumentException("Paciente com ID " + pacienteId + " não encontrado.");
-        }
+        var paciente = pacienteRepository.buscaPorId(pacienteId)
+                .orElseThrow(() -> new RegraDeNegocioException("Paciente com ID " + pacienteId + " não encontrado."));
 
-        return atendimentoRepository.buscaPorPaciente(pacienteId);
+        return atendimentoRepository.buscaPorPaciente(paciente);
     }
 }
