@@ -1,7 +1,6 @@
 package br.com.hospitalar.domain.valueobjects;
 
 public record Endereco(
-        Long id,
         String logradouro,
         String numero,
         String complemento,

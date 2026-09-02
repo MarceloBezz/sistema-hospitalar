@@ -32,6 +32,12 @@ public class Paciente {
         this.email = email;
     }
 
+    public Paciente(Long id, Endereco endereco, String nome, String cpf, String telefone,
+            LocalDate dataNascimento, String email) {
+        this(endereco, nome, cpf, telefone, dataNascimento, email);
+        this.id = id;
+    }
+
     private void validaDados(Endereco endereco, String nome, String cpf, String telefone, LocalDate dataNascimento,
             String email) {
         if (endereco == null || nome == null || !validarNome(nome) || cpf == null || !validarCPF(cpf)
